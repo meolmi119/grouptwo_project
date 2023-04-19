@@ -1,0 +1,77 @@
+.textbox1 {
+	border-radius:20px;
+	width:400px;
+	text-align:center;
+}
+.textbox2 {
+	border-radius:20px;
+	width:200px;
+	text-align:center;
+}
+table {
+	text-align:center;
+	margin-left:auto;
+	margin-right:auto;
+}
+#select_goods_stay_sort {
+	width:410px;
+	border-radius:20px;
+	text-align:center;
+}
+
+/* 그냥 css */
+@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=IBM+Plex+Sans+KR:wght@300&family=Montserrat:ital,wght@1,500&display=swap');
+* {
+	font-family: 'IBM Plex Sans KR', sans-serif;
+	line-height: normal;
+}
+
+.subm3:active, .subm4:active {
+	margin-left: 5px;
+	margin-top: 5px;
+	box-shadow: none;
+}
+.subm3:focus {
+	background-color: #0E256D; /* 배경색 */
+	border: 1px solid #9FCBF6; /* 테두리 */
+	color: #9FCBF6; /* 글자색 */
+	box-shadow: 3px 3px 3px #0E256D;
+}
+.subm4:hover, .subm3:hover { /* 버튼 위로 마우스 포인터 올렸을 때 스타일 */
+	background-color: #0E256D; /* 배경색 */
+	border: 1px solid #9FCBF6; /* 테두리 */
+	color: #9FCBF6; /* 글자색 */
+}
+.btn_d2 {
+	width: 80px;
+	height: 50px;
+	margin: 0px;
+}
+
+.subm3 { /* 버튼 스타일 */
+	width: 150px;
+	height: 35px;
+	margin: 0px;
+	background-color: #0E256D; /* 배경색 */
+	border: 1px solid #9FCBF6; /* 테두리 */
+	color: #fff; /* 글자색 */
+	cursor: pointer; /* 마우스 포인터 */
+	padding: 5px 10px 6px 7px; /* 패딩 */
+	border-radius: 10px;
+	font-weight: bolder;
+	font-size: 15px;
+	
+	box-shadow: 3px 3px 3px #0E256D;
+	transition-duration: 0.3s;
+}
+.subm4 { /* 버튼 스타일 */
+	background-color: #9FCBF6; /* 배경색 */
+	border: 1px solid #0E256D; /* 테두리 */
+	cursor: pointer; /* 마우스 포인터 */
+	border-radius: 10px;
+	
+	transition-duration: 0.3s;
+	width: 80px;
+	height: 30px;
+	margin: 0px;
+}

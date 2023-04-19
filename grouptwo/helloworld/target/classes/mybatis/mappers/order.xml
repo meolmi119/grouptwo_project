@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.order">
+	<!-- 리절트 맵 정의 -->	
+	<resultMap id="goodsResultS" type="goodsStayVO">
+		<result property="goods_stay_id" column="goods_stay_id" />
+		<result property="busi_id" column="busi_id" />
+		<result property="goods_stay_name" column="goods_stay_name" />
+		<result property="goods_stay_roadAddress" column="goods_stay_roadAddress" />
+		<result property="goods_stay_jibunAddress" column="goods_stay_jibunAddress" />
+		
+		<result property="goods_stay_namujiAddress" column="goods_stay_namujiAddress" />
+		<result property="goods_stay_zipcode" column="goods_stay_zipcode" />
+		<result property="goods_stay_num_people" column="goods_stay_num_people" />
+		<result property="goods_stay_price" column="goods_stay_price" />
+		<result property="goods_stay_discount" column="goods_stay_discount" />
+		
+		<result property="goods_stay_discount_title" column="goods_stay_discount_title" />
+		<result property="goods_stay_sales_price" column="goods_stay_sales_price" />
+		<result property="goods_stay_admin_yn" column="goods_stay_admin_yn" />
+		<result property="goods_stay_room_number" column="goods_stay_room_number" />
+		<result property="goods_stay_entered_Date" column="goods_stay_entered_Date" />
+		
+		<result property="goods_stay_admission_Date" column="goods_stay_admission_Date" />
+		<result property="goods_stay_departure_Date" column="goods_stay_departure_Date" />
+		<result property="goods_stay_sort" column="goods_stay_sort" />
+	</resultMap>
+	<resultMap id="busi_goodsAirResult" type="goodsAirVO">
+		<result property="goods_air_id" column="goods_air_id" />
+		<result property="busi_id" column="busi_id" />
+		<result property="goods_air_name" column="goods_air_name" />
+		<result property="goods_air_depart1" column="goods_air_depart1" />
+		<result property="goods_air_arrive1" column="goods_air_arrive1" />
+		
+		<result property="goods_air_depart_Date" column="goods_air_depart_Date" />
+		<result property="goods_air_arrive_Date" column="goods_air_arrive_Date" />
+		<result property="goods_air_class" column="goods_air_class" />
+		<result property="goods_air_num_people" column="goods_air_num_people" />
+		<result property="goods_air_price" column="goods_air_price" />
+		
+		<result property="goods_air_sales_price" column="goods_air_sales_price" />
+		<result property="goods_air_discount" column="goods_air_discount" />
+		<result property="goods_air_discount_title" column="goods_air_discount_title" />
+		<result property="goods_air_admin_yn" column="goods_air_admin_yn" />
+		<result property="goods_air_entered_Date" column="goods_air_entered_Date" />
+		
+		<result property="air_airplane_id" column="air_airplane_id" />
+	</resultMap>
+	
+	<resultMap id="orderGoodsAirResult" type="OrderAirVO">
+	    <result property="air_seq_num" column="air_seq_num" />
+		<result property="air_order_id" column="air_order_id" />
+		<result property="mem_id" column="mem_id" />
+		<result property="air_order_qty_people" column="air_order_qty_people" />
+		<result property="air_order_pay_method" column="air_order_pay_method" />
+		<result property="air_order_card_name" column="air_order_card_name" />
+		<result property="air_order_pay_month" column="air_order_pay_month" />
+		<result property="air_order_state" column="air_order_state" />
+		<result property="air_order_date" column="air_order_date" />
+		
+		<result property="air_order_vihicleId" column="air_order_vihicleId" />
+		<result property="air_order_airlineNm" column="air_order_airlineNm" />
+		<result property="air_order_depPlandTime" column="air_order_depPlandTime" />
+		<result property="air_order_arrPlandTime" column="air_order_arrPlandTime" />
+		<result property="air_order_depAirportNm" column="air_order_depAirportNm" />
+		<result property="air_order_arrAirportNm" column="air_order_arrAirportNm" />
+		<result property="air_order_Charge" column="air_order_Charge" />
+	</resultMap>
+	
+	<resultMap id="orderGoodsStayResult" type="OrderStayVO">
+	    <result property="stay_seq_num" column="stay_seq_num" />
+		<result property="stay_order_id" column="stay_order_id" />
+		<result property="mem_id" column="mem_id" />
+		<result property="goods_stay_id" column="goods_stay_id" />
+		<result property="stay_order_qty_people" column="stay_order_qty_people" />
+		<result property="stay_order_pay_method" column="stay_order_pay_method" />
+		<result property="stay_order_card_name" column="stay_order_card_name" />
+		<result property="stay_order_pay_month" column="stay_order_pay_month" />
+		
+		<result property="stay_order_state" column="stay_order_state" />
+		<result property="stay_order_date" column="stay_order_date" />
+		<result property="stay_name" column="stay_name" />
+		<result property="busi_id" column="busi_id" />
+		<result property="stay_sort" column="stay_sort" />
+		<result property="stay_address" column="stay_address" />
+		<result property="stay_admissionDate" column="stay_admissionDate" />
+		<result property="stay_departureDate" column="stay_departureDate" />
+		<result property="stay_price" column="stay_price" />
+		<result property="stay_num_people" column="stay_num_people" />
+	</resultMap>
+	
+	<resultMap id="imageResult" type="ImageFileVO">
+		<result property="image_id" column="image_id"/>
+		<result property="goods_id" column="goods_id"/>
+		<result property="fileName" column="fileName"/>
+		<result property="reg_id" column="reg_id"/>
+		<result property="fileType" column="fileType"/>
+	</resultMap>	
+	
+	<resultMap id="cart_stay_Result" type="cartStayVO">
+		<result property="cart_stay_id" column="cart_stay_id"/>
+		<result property="cart_stay_room_number" column="cart_stay_room_number"/>
+		<result property="cart_stay_creDate" column="cart_stay_creDate"/>
+		<result property="mem_id" column="mem_id"/>
+		<result property="goods_stay_id" column="goods_stay_id"/>
+		
+		<result property="startD" column="startD"/>
+		<result property="endD" column="endD"/>
+	</resultMap>	
+	
+	<resultMap id="cart_air_Result" type="cartAirVO">
+		<result property="cart_air_id" column="cart_air_id"/>
+		<result property="cart_air_qty_people" column="cart_air_qty_people"/>
+		<result property="cart_air_creDate" column="cart_air_creDate"/>
+		<result property="air_airplane_id" column="air_airplane_id"/>
+		<result property="mem_id" column="mem_id"/>
+		
+		<result property="cart_vihicleId" column="cart_vihicleId"/>
+		<result property="cart_airlineNm" column="cart_airlineNm"/>
+		<result property="cart_depPlandTime" column="cart_depPlandTime"/>
+		<result property="cart_arrPlandTime" column="cart_arrPlandTime"/>
+		<result property="cart_depAirportNm" column="cart_depAirportNm"/>
+		
+		<result property="cart_arrAirportNm" column="cart_arrAirportNm"/>
+		<result property="cart_economyCharge" column="cart_economyCharge"/>
+		<result property="cart_prestigeCharge" column="cart_prestigeCharge"/>
+	</resultMap>
+	
+	
+	
+	<!-- ======== 항공결제========== -->
+	 <select id="selectMyOrderAirList" resultMap="orderGoodsAirResult"  parameterType="OrderAirVO"  >
+	    <![CDATA[
+			select * from order_airt
+			where date_format(air_order_date,''YYYY-MM-DD')=date_format(sysdate,''YYYY-MM-DD')
+        	and mem_id=#{mem_id}
+        	order by air_order_date desc
+		]]>
+	</select>
+			<!--to_char(pay_order_time,'yyyy-mm-dd')=to_char(sysdate,'yyyy-mm-dd') -->
+	
+	<insert id="insertNewOrderAir" parameterType="OrderAirVO"  >
+	    <selectKey resultType="int" keyProperty="air_seq_num" order="BEFORE">
+	    	select nextval(test_seqair);
+	    </selectKey>
+	    <![CDATA[
+			insert into order_airt(air_seq_num,
+		                            air_order_id,
+									mem_id,
+								    air_order_qty_people,
+								    air_order_pay_method,
+								    air_order_card_name,
+								    air_order_pay_month,
+								    air_order_state,
+								    air_order_vihicleId, 
+								    air_order_airlineNm,
+								    air_order_depPlandTime,
+								    air_order_arrPlandTime,
+								    air_order_depAirportNm,
+								    air_order_arrAirportNm,
+								    air_order_Charge)
+						     values(#{air_seq_num},
+						            #{air_order_id},
+								    #{mem_id},
+								    #{air_order_qty_people},
+								    #{air_order_pay_method},
+								    #{air_order_card_name},
+								    #{air_order_pay_month},
+								    #{air_order_state},
+								    #{air_order_vihicleId},
+								    #{air_order_airlineNm},
+								    #{air_order_depPlandTime},
+								    #{air_order_arrPlandTime},
+								    #{air_order_depAirportNm},
+								    #{air_order_arrAirportNm},
+								    #{air_order_Charge})
+    	]]>
+	</insert>
+
+   <!--<select id="selectOrderID" resultType="int"  >
+	    <![CDATA[
+		    select order_id.nextval from dual
+    	]]>
+	</select>-->
+	<select id="selectOrderAirID" resultType="int"  >
+       <![CDATA[
+          SELECT NEXTVAL(test_seqAir);
+       ]]>
+   </select>
+   
+   <select id="selectOrderGroupId" resultType="int"  >
+       <![CDATA[
+          SELECT NEXTVAL(test_seqair_order);
+       ]]>
+   </select>
+	<!--select seq_order_id.nextval from dual-->
+	
+	<select id="selectMyOrderAir" resultMap="orderGoodsAirResult"   parameterType="String"  >
+	    <![CDATA[
+		    select * from order_airt
+            where date_format(air_order_date,''YYYY-MM-DD')=date_format(sysdate,''YYYY-MM-DD')
+            and air_order_id=#{air_order_id}
+            order by air_order_date desc
+    	]]>
+	</select>
+		<!--to_char(pay_order_time,'yyyy-mm-dd')=to_char(sysdate,'yyyy-mm-dd')--> 
+	
+	<!-- ======== 숙박결제========== -->
+	<select id="selectMyOrderStayList" resultMap="orderGoodsStayResult"  parameterType="OrderStayVO"  >
+	    <![CDATA[
+			select * from order_stayt
+			where date_format(stay_order_date,''YYYY-MM-DD')=date_format(sysdate,''YYYY-MM-DD')
+        	and mem_id=#{mem_id}
+        	order by stay_order_date desc
+		]]>
+	</select>
+	
+	<insert id="insertNewOrderStay" parameterType="OrderStayVO"  >
+	    <selectKey resultType="int" keyProperty="stay_seq_num" order="BEFORE">
+	    	select nextval(test_seqair);
+	    </selectKey>
+	    <![CDATA[
+			insert into order_stayt(stay_seq_num,
+								  stay_order_id,
+								  mem_id,
+								  goods_stay_id,
+								  stay_order_qty_people,
+								  stay_order_pay_method,
+								  stay_order_card_name,
+								  stay_order_pay_month,
+								
+								  stay_order_state,
+								  stay_order_date,
+								  stay_name,
+								  busi_id,
+								  stay_sort,
+								  stay_address,
+								  stay_admissionDate,
+								  stay_departureDate,
+								  stay_price,
+								  stay_num_people)
+						     values(#{stay_seq_num},
+						            #{stay_order_id},
+								    #{mem_id},
+								    #{goods_stay_id},
+								    #{stay_order_qty_people},
+								    #{stay_order_pay_method},
+								    #{stay_order_card_name},
+								    #{stay_order_pay_month},
+								    #{stay_order_state},
+								    #{stay_order_date},
+								    #{stay_name},
+								    #{busi_id},
+								    #{stay_sort},
+								    #{stay_address},
+								    #{stay_admissionDate},
+								    #{stay_departureDate},
+								    #{stay_price},
+								    #{stay_num_people})
+    	]]>
+	</insert>
+
+	<select id="selectMyOrderStay" resultMap="orderGoodsStayResult"   parameterType="String"  >
+	    <![CDATA[
+		    select * from order_stayt
+            where date_format(stay_order_date,''YYYY-MM-DD')=date_format(sysdate,''YYYY-MM-DD')
+            and stay_order_id=#{stay_order_id}
+            order by stay_order_date desc
+    	]]>
+	</select>
+	
+	<!-- ======== 장바구니========== -->
+	<delete id="deleteGoodsFromCartAir" parameterType="OrderAirVO">
+	  delete from cart_airt
+	  where cart_air_id=#{air_order_id}
+	</delete>
+	
+	<select id="selectStayCartList"  parameterType="cartStayVO"  resultMap="cart_stay_Result"   >
+	    <![CDATA[
+			select *
+			from cart_stayt 
+			where mem_id=#{mem_id} 
+			and cart_stay_id=#{cart_stay_id}
+			ORDER BY cart_stay_id
+		]]>
+	</select>
+	
+	<select id="selectGoodsList" resultMap="goodsResultS" parameterType="java.util.Map">
+      <![CDATA[
+          	SELECT g.*, 
+		    COALESCE(d.fileName, 'no_image.jpg') AS goods_stay_fileName 
+		    FROM goods_stayt g 
+		    LEFT JOIN goods_detail_imaget d 
+		    ON g.goods_stay_id = d.goods_id 
+		    AND d.filetype = 'main_image'
+		    WHERE g.goods_stay_id IN
+      ]]>
+		<foreach item="item" collection="list" open="(" separator="," close=")">
+			#{item.goods_stay_id}
+		</foreach>
+		ORDER BY goods_stay_id
+	</select>
+	
+	<!-- 0413 회원이 예약(결제)확인을 위한 결제정보를 가져가는중  -->
+	<select id="selectOrderHistoryStayList" resultMap="orderGoodsStayResult"   parameterType="String"  >
+	    <![CDATA[
+		    select * from order_stayt
+            where mem_id=#{mem_id}
+            order by stay_order_date desc
+    	]]>
+	</select>
+	
+	<select id="selectOrderHistoryAirList" resultMap="orderGoodsAirResult"   parameterType="String"  >
+	    <![CDATA[
+		    select * from order_airt
+            where mem_id=#{mem_id}
+            order by air_order_date desc
+    	]]>
+	</select>
+	
+	<!-- 회원이 취소버튼을 누르면 실행하는 sql -->
+	<update id="updateOrderStayState" parameterType="OrderStayVO">
+		update order_stayt
+		set stay_order_state=#{stay_order_state}
+		where	 
+		mem_id=#{mem_id} and stay_seq_num=#{stay_seq_num}
+	</update>
+	
+	<update id="updateOrderAirState" parameterType="OrderAirVO">
+		update order_airt
+		set air_order_state=#{air_order_state}
+		where	 
+		mem_id=#{mem_id} and air_seq_num=#{air_seq_num}
+	</update>
+	
+	<select id="selectBusiGoodsList" resultMap="goodsResultS" parameterType="String">
+	    <![CDATA[
+			select *
+			from goods_stayt 
+			where busi_id=#{busi_id} 
+			ORDER BY goods_stay_id
+		]]>
+	</select>
+ 	
+	<select id="selectBusiOrderList" resultMap="orderGoodsStayResult" parameterType="java.util.List">
+      <![CDATA[
+          	SELECT *
+			FROM order_stayt g 
+		    WHERE g.goods_stay_id IN
+      ]]>
+		<foreach item="item" collection="list" open="(" separator="," close=")">
+			#{item.goods_stay_id}
+		</foreach>
+		ORDER BY goods_stay_id
+	</select>
+
+	<update id="permitOrderStayState" parameterType="OrderStayVO">
+		update order_stayt
+		set stay_order_state=#{stay_order_state}
+		where	 
+		stay_seq_num=#{stay_seq_num}
+	</update>
+	
+	<select id="selectAllOrderStayList" resultMap="orderGoodsStayResult" parameterType="java.util.List">
+	    <![CDATA[
+			select *
+			from order_stayt
+			ORDER BY stay_order_date
+		]]>
+	</select>
+	
+	<select id="selectAllOrderAirList" resultMap="orderGoodsAirResult" parameterType="java.util.List">
+	    <![CDATA[
+			select *
+			from order_airt 
+			ORDER BY air_order_date
+		]]>
+	</select>
+	
+	<update id="updateAdminStayState" parameterType="OrderStayVO">
+		update order_stayt
+		set stay_order_state=#{stay_order_state}
+		where	 
+		stay_seq_num=#{stay_seq_num}
+	</update>
+	
+	<update id="updateAdminAirState" parameterType="OrderAirVO">
+		update order_airt
+		set air_order_state=#{air_order_state}
+		where	 
+		air_seq_num=#{air_seq_num}
+	</update>
+</mapper>

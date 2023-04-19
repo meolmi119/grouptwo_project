@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.busi_goods">
+<resultMap id="busi_goodsStayResult" type="goodsStayVO">
+		<result property="goods_stay_id" column="goods_stay_id" />
+		<result property="busi_id" column="busi_id" />
+		<result property="goods_stay_name" column="goods_stay_name" />
+		<result property="goods_stay_roadAddress" column="goods_stay_roadAddress" />
+		<result property="goods_stay_jibunAddress" column="goods_stay_jibunAddress" />
+		
+		<result property="goods_stay_namujiAddress" column="goods_stay_namujiAddress" />
+		<result property="goods_stay_zipcode" column="goods_stay_zipcode" />
+		<result property="goods_stay_num_people" column="goods_stay_num_people" />
+		<result property="goods_stay_price" column="goods_stay_price" />
+		<result property="goods_stay_discount" column="goods_stay_discount" />
+		
+		<result property="goods_stay_discount_title" column="goods_stay_discount_title" />
+		<result property="goods_stay_sales_price" column="goods_stay_sales_price" />
+		<result property="goods_stay_admin_yn" column="goods_stay_admin_yn" />
+		<result property="goods_stay_room_number" column="goods_stay_room_number" />
+		<result property="goods_stay_entered_Date" column="goods_stay_entered_Date" />
+		
+		<result property="goods_stay_admission_Date" column="goods_stay_admission_Date" />
+		<result property="goods_stay_departure_Date" column="goods_stay_departure_Date" />
+		<result property="goods_stay_sort" column="goods_stay_sort" />
+		<result property="goods_stay_sort_level" column="goods_stay_sort_level" />
+	</resultMap>
+	
+	<resultMap id="imageResult" type="ImageFileVO">
+	<result property="image_id" column="image_id"/>
+	<result property="goods_id" column="goods_id"/>
+	<result property="fileName" column="fileName"/>
+	<result property="reg_id" column="reg_id"/>
+	<result property="fileType" column="fileType"/>
+	</resultMap>	
+	
+	<!-- 할인률(널허용으로 바꾼 사람_변재선) goods_stay_discount,
+	할인상품종류 goods_stay_discount_title,
+	할인가 goods_stay_sales_price // null 처리
+	상품등록날짜(current_timestamp) goods_stay_entered_Date -->
+	<select id="insertNewGoodsStay" parameterType="goodsStayVO">
+        <![CDATA[
+	      insert into goods_stayt(
+	      goods_stay_id,
+	      busi_id,
+	      goods_stay_name,
+	      goods_stay_sort,
+          goods_stay_sort_level,
+	      goods_stay_roadAddress, 
+	      goods_stay_zipcode,
+	      goods_stay_jibunAddress,
+	      goods_stay_namujiAddress,
+	      goods_stay_num_people,
+	      goods_stay_price,
+	      goods_stay_room_number,
+	      goods_stay_admin_yn
+	      )
+	      values(
+	      #{goods_stay_id},
+	      #{busi_id},
+	      #{goods_stay_name},
+	      #{goods_stay_sort},
+		  #{goods_stay_sort_level},
+	      #{goods_stay_roadAddress},
+	      #{goods_stay_zipcode},
+	      #{goods_stay_jibunAddress},
+	      #{goods_stay_namujiAddress},
+	      #{goods_stay_num_people},
+	      #{goods_stay_price},
+	      #{goods_stay_room_number},
+	      'n'
+	      )
+	    ]]>
+	</select>
+	<!-- 	      goods_stay_admission_Date, -->
+<!-- 	      goods_stay_departure_Date, -->
+<!-- 	      #{goods_stay_admission_Date}, -->
+<!-- 	      #{goods_stay_departure_Date}, -->
+	
+	<insert id="insertGoodsImageFile" parameterType="imageFileVO"   >
+		<selectKey resultType="int" keyProperty="image_id" order="BEFORE">
+	    	select nextval(hello_seq);
+	    </selectKey>
+		<!--select seq_image_id.nextval from dual-->
+	    <![CDATA[
+		   insert into goods_detail_imaget (image_id,
+		                                     goods_id,
+											 fileName,
+											 fileType,
+											 reg_id)
+		   					values(#{image_id},
+		   					 			 #{goods_id},
+		   							 	 #{fileName},
+	   								  	 CONCAT('detail_image', #{image_id}),
+		   								 #{reg_id} )
+		]]>
+	</insert> 
+	
+	<select id="selectGoodsStayID" resultType="int"  >
+       <![CDATA[
+          SELECT NEXTVAL(hello_seq);
+       ]]>
+   </select>
+
+	<!-- 하희 수정 0316~ -->
+	<select id="selectNewGoodsStayList" resultMap="busi_goodsStayResult"   parameterType="java.util.Map"  >
+       <![CDATA[
+        select * from (
+               select 
+                      goods_stay_id,
+                      goods_stay_name,
+                      busi_id,
+                      goods_stay_sort,
+                      goods_stay_price,
+                      goods_stay_sales_price
+                from (
+                      select  goods_stay_id,
+                             goods_stay_name,
+                             busi_id,
+                             goods_stay_sort,
+                             goods_stay_price,
+                             goods_stay_sales_price
+                       from goods_stayt 
+                   )a
+            )b
+       ]]>
+   </select>
+   <!-- <select id="selectNewGoodsStayList" resultMap="busi_goodsStayResult"   parameterType="java.util.Map"  >
+       <![CDATA[
+        select * from (
+               select row_Number() over(order by goods_stay_entered_Date desc) as recNum,
+                      goods_stay_id,
+                      goods_stay_name,
+                      busi_id,
+                      goods_stay_sort,
+                      goods_stay_price,
+                      date_format(goods_stay_entered_Date,'%Y-%m-%d') as goods_stay_entered_Date
+                      
+                from (
+                      select  goods_stay_id,
+                             goods_stay_name,
+                             busi_id,
+                             goods_stay_sort,
+                             goods_stay_price,
+                             goods_entered_date
+                       from goods_stayt 
+                   )a
+            )b       
+		where recNum between (#{section}-1)*100+ (#{pageNum}-1)*10+1 and (#{section}-1)*100+(#{pageNum})*10              
+		order by goods_stay_entered_Date desc
+       ]]>
+   </select> -->
+
+
+   <select id="selectGoodsStayDetail" resultMap="busi_goodsStayResult"   parameterType="String"  >
+	    <![CDATA[
+		     select g.*,date_format(g.goods_stay_entered_Date,'YYYY-MM-DD') as goods_stay_entered_Date, d.fileName from goods_stayt g, goods_detail_imaget d
+		        where g.goods_stay_id=d.goods_id
+		        and d.filetype='main_image'
+		        and g.goods_stay_id=#{goods_stay_id}
+		        order by g.goods_stay_id
+    	]]>
+	</select><!-- select g.*,date_format(g.goods_published_date,'YYYY-MM-DD') as goods_published_date, d.fileName from goods_stayt g, goods_detail_imaget d -->
+
+	<select id="selectGoodsStayImageFileList" resultMap="imageResult"   parameterType="String"  >
+	    <![CDATA[
+		    	select * from  goods_detail_imaget 
+		    	where  
+			    goods_id=#{goods_id}
+			    order by image_id asc
+    	]]>
+	</select>	
+	
+	<update id="updateGoodsStayInfo" parameterType="java.util.HashMap" >
+	   update goods_stayt
+	    <set> 
+	      <if test=" goods_stay_name!='' and goods_stay_name!=null">
+	        goods_stay_name=#{goods_stay_name},
+	      </if>
+	      <if test=" goods_stay_roadAddress!='' and goods_stay_roadAddress!=null">
+	        goods_stay_roadAddress=#{goods_stay_roadAddress},
+	      </if>
+	      <if test=" goods_stay_jibunAddress!='' and goods_stay_jibunAddress!=null">
+	        goods_stay_jibunAddress=#{goods_stay_jibunAddress},
+	      </if>
+	      <if test=" goods_stay_namujiAddress!='' and goods_stay_namujiAddress!=null">
+	        goods_stay_namujiAddress=#{goods_stay_namujiAddress},
+	      </if>
+	      <if test=" goods_stay_zipcode!='' and goods_stay_zipcode!=null">
+	        goods_stay_zipcode=#{goods_stay_zipcode},
+	      </if>
+	      <if test=" goods_stay_num_people!='' and goods_stay_num_people!=null">
+	        goods_stay_num_people=#{goods_stay_num_people},
+	      </if>
+	      <if test=" goods_stay_price!='' and goods_stay_price!=null">
+	        goods_stay_price=#{goods_stay_price},
+	      </if>
+	      <if test=" goods_stay_discount!='' and goods_stay_discount!=null">
+	        goods_stay_discount=#{goods_stay_discount},
+	      </if>
+	      <if test=" goods_stay_discount_title!='' and goods_stay_discount_title!=null">
+	        goods_stay_discount_title=#{goods_stay_discount_title},
+	      </if>
+	      <if test=" goods_stay_sales_price!='' and goods_stay_sales_price!=null">
+	        goods_stay_sales_price=#{goods_stay_sales_price},
+	      </if>
+	      <if test=" goods_stay_room_number!='' and goods_stay_room_number!=null">
+	        goods_stay_room_number=#{goods_stay_room_number},
+	      </if>
+	      <if test=" goods_stay_sort!='' and goods_stay_sort!=null">
+	        goods_stay_sort=#{goods_stay_sort},
+	      </if>
+	     </set>
+	    where 
+	    goods_stay_id=#{goods_stay_id}
+	</update>	
+
+	<!-- <insert id="insertGoodsStayImageFile" parameterType="imageFileVO"   >
+		<selectKey resultType="int" keyProperty="image_id" order="BEFORE">
+	    	select nextval(hello2_seq);
+	    </selectKey>
+		select seq_image_id.nextval from dual
+	    <![CDATA[
+		   insert into goods_detail_imaget (image_id,
+		                                     goods_id,
+											 fileName,
+											 fileType,
+											 reg_id)
+		   					values(#{image_id},
+		   					 			 #{goods_id},
+		   							 	 #{fileName},
+		   								 #{fileType},
+		   								 #{reg_id} )
+		]]>
+	</insert> -->
+	<!--  and fileType=#{fileType} -->
+	<update id="updateGoodsStayImage" parameterType="imageFileVO">
+		update goods_detail_imaget
+		set fileName=#{fileName}
+		where	 
+		goods_id=#{goods_id} and image_id=#{image_id} and fileType=#{fileType}
+	</update>
+	<!-- and fileType=#{fileType} -->
+
+	<delete id="deleteGoodsStayImage" parameterType="String">
+	  delete from goods_detail_imaget
+	  where image_id=#{image_id}
+	</delete>
+   
+   <!-- 여기까지 하희 수정 0316~ -->
+</mapper>

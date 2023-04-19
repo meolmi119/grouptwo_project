@@ -1,0 +1,10 @@
+eclipse.preferences.version=1
+encoding//src/main/java/com/spring/helloworld/busi/goods/controller/BusiGoodsControllerImpl.java=UTF-8
+encoding//src/main/java/com/spring/helloworld/cart/controller/CartControllerImpl.java=UTF-8
+encoding//src/main/java/com/spring/helloworld/cart/dao/CartDAOImpl.java=UTF-8
+encoding//src/main/java/com/spring/helloworld/cart/service/CartServiceImpl.java=UTF-8
+encoding//src/main/java/com/spring/helloworld/common/base/BaseController.java=UTF-8
+encoding//src/main/java/com/spring/helloworld/common/file/FileDownloadController.java=UTF-8
+encoding//src/main/java/com/spring/helloworld/goods/controller/GoodsControllerImpl.java=UTF-8
+encoding//src/main/java/com/spring/helloworld/order/service/OrderServiceImpl.java=UTF-8
+encoding//src/main/java/com/spring/helloworld/test/TestController.java=UTF-8

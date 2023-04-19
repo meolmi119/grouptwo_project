@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+ "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+ "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+	
+	<definition name="searchGoodsStay" extends="baseLayout">
+		<put-attribute name="title" value="숙박 목록" />
+		<put-attribute name="body" value="/WEB-INF/views/goodsstay/searchGoodsStay.jsp" />
+	</definition>
+	
+	<definition name="addNewGoodsStayForm" extends="baseLayout">
+		<put-attribute name="title" value="숙박 상품 등록" />
+		<put-attribute name="body" value="/WEB-INF/views/busi/goods/addNewGoodsStayForm.jsp" />
+	</definition>
+	
+	<definition name="modifyGoodsStayForm" extends="baseLayout">
+       <put-attribute name="title" value="상품 수정 페이지" />
+       <put-attribute name="body" value="/WEB-INF/views/busi/goods/modifyGoodsStayForm.jsp" />
+    </definition>
+    
+    <definition name="adminGoodsMain" extends="baseLayout">
+       <put-attribute name="title" value="사업자 상품 리스트 페이지" />
+       <put-attribute name="body" value="/WEB-INF/views/busi/goods/busiGoodsMain.jsp" />
+    </definition>
+	
+	<definition name="addNewGoodsAirForm" extends="baseLayout">
+		<put-attribute name="title" value="항공 상품 등록" />
+		<put-attribute name="body" value="/WEB-INF/views/busi/goods/addNewGoodsAirForm.jsp" />
+	</definition>
+</tiles-definitions>

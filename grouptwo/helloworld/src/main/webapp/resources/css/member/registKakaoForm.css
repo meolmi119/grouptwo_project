@@ -1,0 +1,70 @@
+.fifth>form {
+  width: 50%;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 0px 5%;
+  padding-bottom: 50px;
+  padding-top: 30px;
+  margin: 0 auto;
+  text-align: center;
+}
+#mem_tel1, #mem_tel2, #mem_tel3 {
+  border: 1px solid #c0c0c0;
+  border-radius: 2px;
+  margin: 5px 0 0;
+  padding: 8px 8px;
+  width: 12.5%;
+  display: inline-block; 
+}
+.fifth h3 {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 10px 0;
+}
+
+.fifth p {
+  text-align: center;
+  line-height: 1rem;
+  color: #555;
+  padding-bottom: 20px;
+  font-size:17px;
+}
+#zipcode{
+  width: 30%;
+}
+#zipcode2{
+  background-color: #9FCBF6; /* 배경색 */
+  border: 1px solid #0E256D; /* 테두리 */
+  box-shadow: 3px 3px 3px #0E256D;
+  border-radius: 10px;
+  cursor: pointer; /* 마우스 포인터 */
+  width: 10%;
+  height: 10%;
+  color: black;
+  
+}
+.fifth button {
+  background-color: #9FCBF6; /* 배경색 */
+  border: 1px solid #0E256D; /* 테두리 */
+  box-shadow: 3px 3px 3px #0E256D;
+  border-radius: 10px;
+  cursor: pointer; /* 마우스 포인터 */
+  width: 50%;
+  color: black;
+}
+
+.fifth button:hover {
+  background-color: #0E256D; /* 배경색 */
+  border: 1px solid #9FCBF6; /* 테두리 */
+  color: #9FCBF6; /* 글자색 */
+  box-shadow: 3px 3px 3px #0E256D;
+}
+.fifth input {
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+}
+.misols input {
+  width: 40%;
+}

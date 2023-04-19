@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+ "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+ "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+    <definition name="/order/orderEachGoodsAir" extends="baseLayout">
+       <put-attribute name="title" value="항공 상품 주문 페이지" />
+       <put-attribute name="body" value="/WEB-INF/views/order/orderGoodsForm.jsp" />
+    </definition>
+    <definition name="/order/orderEachGoodsStay" extends="baseLayout">
+       <put-attribute name="title" value="숙박 상품 주문 페이지" />
+       <put-attribute name="body" value="/WEB-INF/views/order/orderGoodsForm.jsp" />
+    </definition>
+    <definition name="/order/orderGoodsAir" extends="baseLayout">
+       <put-attribute name="title" value="항공 왕복/다구간 주문 페이지" />
+       <put-attribute name="body" value="/WEB-INF/views/order/orderGoodsFormRnM.jsp" />
+    </definition>
+     <definition name="/order/payToOrderGoodsAir" extends="baseLayout">
+       <put-attribute name="title" value="항공 상품 주문 결과 페이지" />
+       <put-attribute name="body" value="/WEB-INF/views/order/orderResult.jsp" />
+    </definition>
+    <definition name="/order/payToOrderGoodsAirRnM" extends="baseLayout">
+       <put-attribute name="title" value="항공 상품 주문 결과 페이지" />
+       <put-attribute name="body" value="/WEB-INF/views/order/orderResultRnM.jsp" />
+    </definition>
+    <definition name="/order/payToOrderGoodsStay" extends="baseLayout">
+       <put-attribute name="title" value="숙박 상품 주문 결과 페이지" />
+       <put-attribute name="body" value="/WEB-INF/views/order/orderResult.jsp" />
+    </definition>
+    <definition name="/order/getDataForEachPaymentAir" extends="baseLayout">
+		<put-attribute name="title" value="항공 개별 결제 조건 가져오기" />
+		<put-attribute name="body" value="/WEB-INF/views/order/orderGoodsForm.jsp" />
+	</definition>
+	<definition name="/order/getDataForEachPaymentStay" extends="baseLayout">
+		<put-attribute name="title" value="숙박 개별 결제 조건 가져오기" />
+		<put-attribute name="body" value="/WEB-INF/views/order/orderGoodsForm.jsp" />
+	</definition>
+	
+	<definition name="/order/myOrderHistory" extends="baseLayout">
+		<put-attribute name="title" value="예약확인(회원)" />
+		<put-attribute name="body" value="/WEB-INF/views/order/myOrderHistory.jsp" />
+	</definition>
+	
+	<definition name="/order/busiOrderList" extends="baseLayout">
+		<put-attribute name="title" value="예약확인(회원)" />
+		<put-attribute name="body" value="/WEB-INF/views/order/busiOrderList.jsp" />
+	</definition>
+</tiles-definitions>

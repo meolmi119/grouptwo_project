@@ -1,0 +1,108 @@
+.memForm h1 {
+  text-align: center;
+  font-weight: 600;
+}
+
+.memForm h2,#memForm h3 {
+  font-weight: 200;
+}
+
+.memForm h6 {
+  margin: 0 0;
+  color: #ccc;
+  font-weight: 500;
+}
+
+.memForm {
+  width: 400px;
+  margin: 50px auto 50px;
+  background: #fff;
+  border: 1px solid #c0c0c0;
+  border-radius: 2px;
+  padding: 8px 16px
+}
+
+.memForm fieldset {
+  border: none;
+}
+
+.memForm label {
+  margin-top: 18px;
+}
+
+.memForm input,#memForm textarea {
+  margin: 5px 0 0;
+  padding: 8px 8px;
+  border:1px solid #c0c0c0;
+  border-radius: 2px;
+  width: 90%
+}
+#certi_tf{
+  display: none;
+}
+#_mem_id, #_certi_num {
+  border: 1px solid #c0c0c0;
+  border-radius: 2px;
+   margin: 5px 0 0;
+  padding: 8px 8px;
+  width: 70%;
+  display: inline-block; 
+}
+#btnOverlapped, #certiBtn {
+  border: 1px solid #c0c0c0;
+  border-radius: 2px;
+   margin: 5px 0 0;
+  padding: 8px 8px;
+  width: 20%;
+  display: inline-block; 
+}
+#zipcode{
+  border: 1px solid #c0c0c0;
+  border-radius: 2px;
+   margin: 5px 0 0;
+  padding: 8px 8px;
+  width: 65%;
+  display: inline-block; 
+}
+#zipcode2{
+  border: 1px solid #c0c0c0;
+  border-radius: 2px;
+   margin: 5px 0 0;
+  padding: 8px 8px;
+  width: 20%;
+  display: inline-block; 
+  font-size: 13px;
+}
+#mem_email1,
+#mem_email2,
+#mem_email3 {
+  border: 1px solid #c0c0c0;
+  border-radius: 2px;
+  margin: 5px 0 0;
+  padding: 8px 8px;
+  width: 27%;
+  display: inline-block; 
+}
+#mem_tel1, #mem_tel2, #mem_tel3 {
+  border: 1px solid #c0c0c0;
+  border-radius: 2px;
+  margin: 5px 0 0;
+  padding: 8px 8px;
+  width: 27%;
+  display: inline-block; 
+}
+#memForm input,#memForm label {
+  display: block;
+}
+
+#memberConfirm,.memForm button {
+  width: 100%;
+  margin: 10px 0;
+  border-radius: 3px;
+  border: none;
+  height: 40px;
+  background: #29B6F6;
+  color: #fff;
+  font-family: 'Open Sans';
+  font-weight: 600;
+}

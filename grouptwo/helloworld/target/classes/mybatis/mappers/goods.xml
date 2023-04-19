@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.goods">
+	<resultMap id="goodsResultS" type="goodsStayVO">
+		<result property="goods_stay_id" column="goods_stay_id" />
+		<result property="busi_id" column="busi_id" />
+		<result property="goods_stay_name" column="goods_stay_name" />
+		<result property="goods_stay_roadAddress" column="goods_stay_roadAddress" />
+		<result property="goods_stay_jibunAddress" column="goods_stay_jibunAddress" />
+		
+		<result property="goods_stay_namujiAddress" column="goods_stay_namujiAddress" />
+		<result property="goods_stay_zipcode" column="goods_stay_zipcode" />
+		<result property="goods_stay_num_people" column="goods_stay_num_people" />
+		<result property="goods_stay_price" column="goods_stay_price" />
+		<result property="goods_stay_discount" column="goods_stay_discount" />
+		
+		<result property="goods_stay_discount_title" column="goods_stay_discount_title" />
+		<result property="goods_stay_sales_price" column="goods_stay_sales_price" />
+		<result property="goods_stay_admin_yn" column="goods_stay_admin_yn" />
+		<result property="goods_stay_room_number" column="goods_stay_room_number" />
+		<result property="goods_stay_entered_Date" column="goods_stay_entered_Date" />
+		
+		<result property="goods_stay_admission_Date" column="goods_stay_admission_Date" />
+		<result property="goods_stay_departure_Date" column="goods_stay_departure_Date" />
+		<result property="goods_stay_sort" column="goods_stay_sort" />
+		
+		<result property="goods_stay_sort_level" column="goods_stay_sort_level" />
+		<result property="goods_stay_fileName" column="goods_stay_fileName" />
+	</resultMap>
+	<resultMap id="goodsResultA" type="goodsAirVO">
+		<result property="goods_air_id" column="goods_air_id" />
+		<result property="busi_id" column="busi_id" />
+		<result property="goods_air_name" column="goods_air_name" />
+		<result property="goods_air_depart1" column="goods_air_depart1" />
+		<result property="goods_air_arrive1" column="goods_air_arrive1" />
+		
+		<result property="goods_air_depart_Date" column="goods_air_depart_Date" />
+		<result property="goods_air_arrive_Date" column="goods_air_arrive_Date" />
+		<result property="goods_air_class" column="goods_air_class" />
+		<result property="goods_air_num_people" column="goods_air_num_people" />
+		<result property="goods_air_price" column="goods_air_price" />
+		
+		<result property="goods_air_sales_price" column="goods_air_sales_price" />
+		<result property="goods_air_discount" column="goods_air_discount" />
+		<result property="goods_air_discount_title" column="goods_air_discount_title" />
+		<result property="goods_air_admin_yn" column="goods_air_admin_yn" />
+		<result property="goods_air_entered_Date" column="goods_air_entered_Date" />
+		
+		<result property="air_airplane_id" column="air_airplane_id" />
+	</resultMap>
+	<resultMap id="goodsResultAA" type="goodsAirApiVO">
+		<result property="goods_air_id" column="goods_air_id" />
+		
+		<result property="vihicleId" column="vihicleId" />
+		<result property="airlineNm" column="airlineNm" />
+		
+		<result property="depPlandTime" column="depPlandTime" />
+		<result property="arrPlandTime" column="arrPlandTime" />
+		
+		<result property="economyCharge" column="economyCharge" />
+		<result property="prestigeCharge" column="prestigeCharge" />
+		
+		<result property="depAirportNm" column="depAirportNm" />
+		<result property="arrAirportNm" column="arrAirportNm" />
+	</resultMap>
+	<!--0317-->		
+	<resultMap id="imageResult" type="ImageFileVO">
+	<result property="image_id" column="image_id"/>
+	<result property="goods_id" column="goods_id"/>
+	<result property="fileName" column="fileName"/>
+	<result property="reg_id" column="reg_id"/>
+	<result property="fileType" column="fileType"/>
+	</resultMap>
+	
+	<select id="selectGoodsStayDetail" resultMap="goodsResultS"   parameterType="String"  >
+	    <![CDATA[
+	     	 SELECT goods_stayt.*, 
+   			 COALESCE(goods_detail_imaget.fileName, 'no_image.jpg') AS goods_stay_fileName 
+			 FROM goods_stayt 
+			 LEFT JOIN goods_detail_imaget 
+       		 ON goods_stayt.goods_stay_id = goods_detail_imaget.goods_id 
+       		 AND goods_detail_imaget.filetype = 'main_image' 
+			 WHERE goods_stayt.goods_stay_id = #{goods_stay_id} 
+			 ORDER BY goods_stayt.goods_stay_id
+    	]]>
+	</select>
+	<select id="selectGoodsDetailImage" resultMap="imageResult"   parameterType="String"  >
+	    <![CDATA[
+		    	select * from  goods_detail_imaget
+		    	where  fileType!='main_image'
+				and goods_id=#{goods_stay_id}
+    	]]>
+	</select>
+	<!--요기까지-->
+	<select id="selectGoodsStayList" parameterType="String" resultMap="goodsResultS"   >
+        <![CDATA[
+	      select * from goods_stayt 
+	      where goods_stay_admin_yn = 'y'
+	      and (goods_stay_roadAddress like concat('%', COALESCE(#{keywordAddress}, ''), '%') or #{keywordAddress} is null or #{keywordAddress} = '')
+	      and (goods_stay_sort like concat('%',  COALESCE(#{keywordSort}, ''), '%') or #{keywordSort} is null or #{keywordSort} = '')
+	      and (goods_stay_name like concat('%', COALESCE(#{keywordName}, ''), '%') or #{keywordName} is null or #{keywordName} = '')
+	      order by goods_stay_entered_Date desc 
+	    ]]>
+	</select>
+	
+	<select id="selectGoodsAirList" parameterType="String" resultMap="goodsResultA"   >
+        <![CDATA[
+	      select * from goods_airt order by goods_air_entered_Date desc 
+	    ]]>
+	</select>
+	
+	<!-- airapi 양하희 0328 -->
+	<select id="selectNewGoodsAirApiList" resultMap="goodsResultAA"   parameterType="java.util.Map"  >
+       <![CDATA[
+        select * from goods_airapit order by depPlandTime desc
+       ]]>
+   </select>
+   
+   <!-- 이벤트 상품 검색(관리자) -->
+	<select id="selectAllStay" resultMap="goodsResultS">
+	<![CDATA[ 
+			select * from goods_stayt
+			where goods_stay_discount != 0
+		]]>
+	</select>
+	
+	<!-- 이벤트 상품 검색(사업자) -->
+	<select id="selectAllStayBusiness" resultMap="goodsResultS">
+	<![CDATA[ 
+			select * from goods_stayt
+			where busi_id=#{busi_id}
+		]]>
+	</select>
+	
+	<!-- 상품 제거(사업자) -->
+	<delete id="goodsUnregist" parameterType="String">
+		<![CDATA[ 
+			delete from goods_stayt
+			where
+			goods_stay_id = #{goods_stay_id}
+		]]>
+	</delete>
+	
+	<!-- 상품 조회(특정 상품) -->
+	<select id="selectGoods" parameterType="String" resultType="GoodsStayVO">
+	<![CDATA[ 
+			select * from goods_stayt
+			where 
+			goods_stay_id = #{goods_stay_id}
+		]]>
+	</select>
+	
+	<!-- 상품 수정(사업자) -->
+	<update id="goodsEdit" parameterType="java.util.Map">
+	   update goods_stayt
+	           <set>
+	              goods_stay_name=#{goods_stay_name},
+             	  goods_stay_price=#{goods_stay_price, jdbcType=INTEGER},
+             	  goods_stay_room_number=#{goods_stay_room_number, jdbcType=INTEGER},
+                  goods_stay_discount_title=#{goods_stay_discount_title},
+                  goods_stay_sales_price=#{goods_stay_sales_price, jdbcType=INTEGER}
+	           </set>
+	    where 
+	    goods_stay_id = #{goods_stay_id}
+	</update>
+	
+	
+	<!-- 이벤트 등록(사업자) -->
+	<update id="goodsEventRegist" parameterType="java.util.Map">
+	   update goods_stayt
+	           <set>
+	             <if test="busi_id !='' ">
+	                goods_stay_discount_title=#{goods_stay_discount_title},
+	              	goods_stay_sales_price=#{goods_stay_sales_price, jdbcType=INTEGER}
+	             </if> 
+	           </set>
+	    where 
+	    goods_stay_id = #{goods_stay_id}
+	</update>
+	
+</mapper>

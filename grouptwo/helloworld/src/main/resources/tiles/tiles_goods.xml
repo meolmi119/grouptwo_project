@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+ "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+ "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+	
+	<definition name="searchGoodsStay" extends="baseLayout">
+		<put-attribute name="title" value="숙박 목록" />
+		<put-attribute name="body" value="/WEB-INF/views/goodsstay/searchGoodsStay.jsp" />
+	</definition>
+	
+	<definition name="goodsStayDetail" extends="baseLayout">
+		<put-attribute name="title" value="숙박 상품 상세" />
+		<put-attribute name="body" value="/WEB-INF/views/goodsstay/goodsStayDetail.jsp" />
+	</definition>
+	
+	<!-- tiles_busi_goods에서 옮겨옴 양하희0328 -->
+	<definition name="searchGoodsAir" extends="baseLayout">
+		<put-attribute name="title" value="항공 목록" />
+		<put-attribute name="body" value="/WEB-INF/views/goodsair/searchGoodsAir.jsp" />
+	</definition>
+	
+	<!-- tiles_member에서 옮겨옴 양하희0328 -->
+	<definition name="airapi" extends="baseLayout">
+		<put-attribute name="title" value="공항 API해보기" />
+		<put-attribute name="body" value="/WEB-INF/views/goodsair/searchGoodsAir.jsp" />
+	</definition>
+	
+	<!-- tiles_member에서 옮겨옴 양하희0328 -->
+	<definition name="airapiTago" extends="baseLayout">
+		<put-attribute name="title" value="공항 API - 국토교통부_(TAGO)_국내항공운항정보" />
+		<put-attribute name="body" value="/WEB-INF/views/goodsair/searchGoodsAir.jsp" />
+	</definition>
+	
+	<definition name="airapiTagoRnM" extends="baseLayout">
+		<put-attribute name="title" value="공항 API - 국토교통부_(TAGO)_국내항공운항정보 for 왕복/다구간" />
+		<put-attribute name="body" value="/WEB-INF/views/goodsair/searchGoodsAir.jsp" />
+	</definition>
+	
+	<definition name="getDataForSearchAir" extends="baseLayout">
+		<put-attribute name="title" value="공항 검색 조건 가져오기" />
+		<put-attribute name="body" value="/WEB-INF/views/goodsair/searchGoodsAir.jsp" />
+	</definition>
+	
+	<definition name="getDataForSearchAirRnM" extends="baseLayout">
+		<put-attribute name="title" value="공항 검색 조건 가져오기(왕복/다구간 추가 데이터)" />
+		<put-attribute name="body" value="/WEB-INF/views/goodsair/searchGoodsAir.jsp" />
+	</definition>
+	
+	<!-- 상품 수정 페이지 -->
+	<definition name="/goods/goodsEditForm" extends="baseLayout">
+		<put-attribute name="title" value="숙박 상품 상세" />
+		<put-attribute name="body" value="/WEB-INF/views/goodsstay/goodsEditForm.jsp" />
+	</definition>
+	
+<!-- 	<definition name="getDepAirportId" extends="baseLayout"> 
+		<put-attribute name="title" value="출발 공항 아이디 가져오기" />
+		<put-attribute name="body" value="/WEB-INF/views/goodsair/searchGoodsAir.jsp" />
+	</definition>
+	
+	<definition name="getArrAirportId" extends="baseLayout">
+		<put-attribute name="title" value="도착 공항 아이디 가져오기" />
+		<put-attribute name="body" value="/WEB-INF/views/goodsair/searchGoodsAir.jsp" />
+	</definition>-->
+	
+</tiles-definitions>

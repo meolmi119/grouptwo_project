@@ -1,0 +1,201 @@
+.text_page {
+	text-align: center;
+	font-weight: bolder;
+}
+#login_h {
+	margin-top: 100px;
+}
+.slider2_img {
+	width: 120%;
+	/* height: 400px; */
+	height: auto;
+}
+#slider {
+	margin: 0 auto;
+	/* width: 500px; */ /* height: 500px; */ /* max-width: 100%; */
+	width: 120%;
+	height: auto;
+	max-width: 1000px;
+	text-align: center;
+}
+#slider input[type=radio] {
+	display: none;
+}
+#slider label {
+	cursor: pointer;
+	text-decoration: none;
+}
+#slides {
+	padding: 10px;
+	/* border: 1px solid #ccc; */
+	background: #fff;
+	position: relative;
+	z-index: 1;
+}
+#overflow {
+	width: 100%;
+	overflow: hidden;
+}
+#slide1:checked ~ #slides .inner {	margin-left: 0;	}
+#slide2:checked ~ #slides .inner {	margin-left: -100%;	}
+#slide3:checked ~ #slides .inner {	margin-left: -200%;	}
+#slide4:checked ~ #slides .inner {	margin-left: -300%;	}
+#slide5:checked ~ #slides .inner {	margin-left: -400%;	}
+#slides .inner {
+	transition: margin-left 800ms cubic-bezier(0.0770, 0.000, 0.175, 1.000);
+	width: 500%; /* -> 아이템 수 * 100 */
+	line-height: 0;
+}
+#slides .slide {
+	width: 20%; /* -> 100 / 아이템 수 */
+	float: left;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	color: #fff;
+}
+.slide-content {
+	/* padding: 10px; */
+	width: 120%;
+}
+#controls {
+	margin: 0;
+	margin-top: -250px;
+	width: 100%;
+	height: 60px;
+	z-index: 3;
+	position: relative;
+}
+#controls label {
+	transition: opacity 0.2s ease-out;
+	display: none;
+	width: 50px;
+	height: 50px;
+	opacity: .4;
+}
+#controls label:hover {
+	opacity: 1;
+	filter: opacity(1) drop-shadow(0 0 0 #FFFFFF);
+}
+#slide1:checked ~ #controls label:nth-child(2), #slide2:checked ~
+	#controls label:nth-child(3), #slide3:checked ~ #controls label:nth-child(4),
+	#slide4:checked ~ #controls label:nth-child(5), #slide5:checked ~
+	#controls label:nth-child(1) {
+	float: right;
+	margin: 0; /*  -50px 0 0; */
+	margin-right: 10px;
+	display: block;
+	background-image: url('http://localhost:8080/helloworld/resources/image/right.png');
+	background-size: 50px;
+	filter: opacity(1) drop-shadow(0 0 0 #FFFFFF);
+}
+#slide1:checked ~ #controls label:nth-child(5), #slide2:checked ~
+	#controls label:nth-child(1), #slide3:checked ~ #controls label:nth-child(2),
+	#slide4:checked ~ #controls label:nth-child(3), #slide5:checked ~
+	#controls label:nth-child(4) {
+	float: left;
+	margin: 0; /*  0 0 -50px; */
+	margin-left: 10px;
+	display: block;
+	background-image: url('http://localhost:8080/helloworld/resources/image/left.png');
+	background-size: 50px;
+	filter: opacity(1) drop-shadow(0 0 0 #FFFFFF);
+}
+#bullets {
+	position: relative;
+	margin: 0;
+	margin-top: 140px;
+	text-align: center;
+	z-index: 3;
+}
+#bullets label {
+	display: inline-block;
+	width: 10px;
+	height: 10px;
+	border-radius: 100%;
+	background: #ccc;
+	margin: 0 10px;
+	z-index: 3;
+}
+.bulLabel {
+	z-index: 1000;
+}
+#slide1:checked ~ #bullets label:nth-child(1), #slide2:checked ~
+	#bullets label:nth-child(2), #slide3:checked ~ #bullets label:nth-child(3),
+	#slide4:checked ~ #bullets label:nth-child(4), #slide5:checked ~
+	#bullets label:nth-child(5) {
+	background: #333;
+	z-index: 3;
+}
+/*여행추천지css*/
+#recoDiv1 {
+	max-width: 960px;
+	margin: 10px auto;
+}
+#recoDiv2 {
+    display: flex;
+    justify-content: center;
+	width: 100%;
+	text-align: center;
+}
+#recoDiv2 h4, #recoDiv2 p {
+	margin: 5px;
+	text-align: center;
+}
+.recoBox {
+	width: 230px;
+	border: 1px solid #ccc;
+	margin: auto;
+}
+#recoBox1 {	margin-left: 0px;	}
+#recoBox4 {	margin-right: 0px;	}
+.recoBox img {
+	width: 230px;
+}
+.recoBox .caption {
+	/*position: absolute;*/
+	/*top: 930px;*/
+	margin-top: -210px;
+	width: 230px;
+	height: 153px;
+	background: rgba(0, 0, 0, 0.6);
+	transition: all 0.2s ease-in-out;
+	z-index: 10;
+	opacity: 0;
+	overflow: hidden;
+}
+.recoBox:hover .caption {
+	opacity: 1;
+	transform: translateY(50px);
+}
+.caption h1, .caption p {
+	color: #fff;
+	text-align: center;
+	margin: 10px auto;
+}
+
+.belowCaption {
+	margin-top: 53px;
+}
+.subm5 {
+	background-color: #9FCBF6; /* 배경색 */
+	border: 1px solid #0E256D; /* 테두리 */
+	cursor: pointer; /* 마우스 포인터 */
+	padding: 5px 10px 6px 7px; /* 패딩 */
+	border-radius: 10px;
+	
+	box-shadow: 3px 3px 3px #0E256D;
+	transition-duration: 0.3s;
+	margin: 10px;
+}
+.subm5:active {
+	margin-left: 5px;
+	margin-top: 5px;
+	box-shadow: none;
+}
+.subm5:hover { /* 버튼 위로 마우스 포인터 올렸을 때 스타일 */
+	background-color: #0E256D; /* 배경색 */
+	border: 1px solid #9FCBF6; /* 테두리 */
+	color: #9FCBF6; /* 글자색 */
+}

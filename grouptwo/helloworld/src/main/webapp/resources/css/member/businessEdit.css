@@ -1,0 +1,112 @@
+.busiForm h1{
+  text-align: center;
+  font-weight: 600;
+}
+
+.busiForm h2,#busiForm h3{
+  font-weight: 200;
+}
+
+.busiForm h6{
+  margin: 0 0;
+  color: #ccc;
+  font-weight: 500;
+}
+
+.busiForm {
+  width: 400px;
+  margin: 50px auto 50px;
+  background: #fff;
+  border: 1px solid #c0c0c0;
+  border-radius: 2px;
+  padding: 8px 16px
+}
+
+.busiForm fieldset{
+  border: none;
+}
+
+.busiForm label{
+  margin-top: 18px;
+}
+
+.busiForm input,#busiForm textarea{
+  margin: 5px 0 0;
+  padding: 8px 8px;
+  border:1px solid #c0c0c0;
+  border-radius: 2px;
+  width: 90%
+}
+#busi_pw, #namujiAddress{
+  border: 1px solid #c0c0c0;
+  border-radius: 2px;
+   margin: 5px 0 0;
+  padding: 8px 8px;
+  width: 70%;
+  display: inline-block; 
+}
+#pw_busiEdit, #addre_busiEdit{
+  border: 1px solid #c0c0c0;
+  border-radius: 2px;
+   margin: 5px 0 0;
+  padding: 8px 8px;
+  width: 20%;
+  display: inline-block; 
+}
+#zipcode{
+  border: 1px solid #c0c0c0;
+  border-radius: 2px;
+   margin: 5px 0 0;
+  padding: 8px 8px;
+  width: 65%;
+  display: inline-block; 
+}
+#zipcode2{
+  border: 1px solid #c0c0c0;
+  border-radius: 2px;
+   margin: 5px 0 0;
+  padding: 8px 8px;
+  width: 20%;
+  display: inline-block; 
+  font-size: 13px;
+}
+#busi_email1,
+#busi_email2{
+  border: 1px solid #c0c0c0;
+  border-radius: 2px;
+  margin: 5px 0 0;
+  padding: 8px 8px;
+  width: 40%;
+  display: inline-block; 
+}
+#busi_tel1, #busi_tel2, #busi_tel3{
+  border: 1px solid #c0c0c0;
+  border-radius: 2px;
+  margin: 5px 0 0;
+  padding: 8px 8px;
+  width: 27%;
+  display: inline-block; 
+}
+#busi_hp1, #busi_hp2, #busi_hp3{
+  border: 1px solid #c0c0c0;
+  border-radius: 2px;
+  margin: 5px 0 0;
+  padding: 8px 8px;
+  width: 27%;
+  display: inline-block; 
+}
+#busiForm input,#busiForm label{
+  display: block;
+}
+
+#businessConfirm,.busiForm button{
+  width: 100%;
+  margin: 10px 0;
+  border-radius: 3px;
+  border: none;
+  height: 40px;
+  background: #29B6F6;
+  color: #fff;
+  font-family: 'Open Sans';
+  font-weight: 600;
+}

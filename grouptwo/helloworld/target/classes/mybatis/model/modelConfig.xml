@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<typeAliases>
+		<typeAlias type="com.spring.helloworld.member.vo.MemberVO" alias="memberVO" />
+		<typeAlias type="com.spring.helloworld.business.vo.BusinessVO" alias="businessVO" />
+		<typeAlias type="com.spring.helloworld.goods.vo.GoodsStayVO" alias="goodsStayVO"/>
+		<typeAlias type="com.spring.helloworld.goods.vo.GoodsAirVO" alias="goodsAirVO"/>
+		<!-- 양하희 AirVO 추가 0328 -->
+		<typeAlias type="com.spring.helloworld.goods.vo.GoodsAirApiVO" alias="goodsAirApiVO"/>
+		<typeAlias type="com.spring.helloworld.goods.vo.ImageFileVO" alias="imageFileVO"/>
+		<typeAlias type="com.spring.helloworld.busi.goods.vo.BusiGoodsStayVO" alias="busi_goods_stayVO"/>
+		<typeAlias type="com.spring.helloworld.mypage.vo.MyPageVO" alias="mypageVO" />
+		<!-- 양하희 결제 order -->
+		<typeAlias type="com.spring.helloworld.order.vo.OrderAirVO" alias="orderAirVO" />
+		<typeAlias type="com.spring.helloworld.order.vo.OrderStayVO" alias="orderStayVO" />
+		
+		<!-- 카트 관련 VO -->
+		<typeAlias type="com.spring.helloworld.cart.vo.CartStayVO" alias="cartStayVO" />
+		<typeAlias type="com.spring.helloworld.cart.vo.CartAirVO" alias="cartAirVO" />
+		
+	</typeAliases>
+</configuration>

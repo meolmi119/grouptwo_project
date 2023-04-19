@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.business">
+	<!-- 리절트 맵 정의 -->
+	<resultMap id="businessResult" type="BusinessVO">
+		<result property="busi_id" column="busi_id" />
+		<result property="busi_pw" column="busi_pw" />
+		<result property="busi_name" column="busi_name" />
+		<result property="busi_brn" column="busi_brn" />
+		<result property="busi_man_name" column="busi_man_name" />
+
+		<result property="busi_tel1" column="busi_tel1" />
+		<result property="busi_tel2" column="busi_tel2" />
+		<result property="busi_tel3" column="busi_tel3" />
+		
+		<result property="busi_hp1" column="busi_hp1" />
+		<result property="busi_hp2" column="busi_hp2" />
+		<result property="busi_hp3" column="busi_hp3" />
+
+		<result property="busi_email1" column="busi_email1" />
+		<result property="busi_email2" column="busi_email2" />
+		
+		<result property="busi_roadAddress" column="busi_roadAddress" />
+		<result property="busi_jibunAddress" column="busi_jibunAddress" />
+		<result property="busi_namujiAddress" column="busi_namujiAddress" />
+		<result property="busi_zipcode" column="busi_zipcode" />
+		
+		<result property="joinDate" column="joinDate" />
+		<result property="del_yn" column="del_yn" />
+	</resultMap>
+
+	<select id="busilogin" resultType="businessVO" parameterType="java.util.Map">
+		<![CDATA[
+			select * from businesst 
+			 where busi_id=#{busi_id}
+			 and busi_pw=#{busi_pw}			
+		]]>
+	</select>
+	
+	<select id="selectOverlappedbusiID" parameterType="String" resultType="String">
+	   	SELECT (CASE WHEN count(*)=1 THEN 'true'
+					WHEN count(*)=0 THEN 'false'
+				ELSE 'true'
+				END)
+	   from businesst
+	   where busi_id = #{id}
+	</select>
+
+	<insert id="insertNewBusi" parameterType="businessVO">
+		<![CDATA[
+    	insert into businesst(busi_id,
+				 					 busi_pw,
+                                     busi_name,
+                                     busi_brn,
+                                     busi_man_name,
+                                     busi_tel1,
+                                     busi_tel2,
+                                     busi_tel3,
+                                     busi_hp1,
+                                     busi_hp2,
+                                     busi_hp3,
+                                     busi_email1,
+                                     busi_email2,
+                                     busi_roadAddress,
+                                     busi_jibunAddress,
+                                     busi_namujiAddress,
+                                     busi_zipcode,
+									del_yn)
+							 values(#{busi_id},
+									#{busi_pw},
+									#{busi_name},
+                                 	#{busi_brn},
+                                 	#{busi_man_name},
+                                   	#{busi_tel1},
+                                   	#{busi_tel2},
+                                    #{busi_tel3},
+                                    #{busi_hp1},
+                                    #{busi_hp2},
+                                    #{busi_hp3},
+                                    #{busi_email1},
+                                    #{busi_email2},
+                                    #{busi_roadAddress},
+                                    #{busi_jibunAddress},
+                                    #{busi_namujiAddress},
+                                    #{busi_zipcode}, 
+									'N')
+   		]]>
+	</insert>
+	
+	<delete id="unregisterBusiness" parameterType="String">
+		<![CDATA[ 
+			delete from businesst
+			where busi_id=#{busi_id}
+		]]>
+	</delete>
+	
+	<!-- 사업자정보조회(아이디 찾기) -->
+	<select id="selectMember" parameterType="String" resultType="BusinessVO">
+	<![CDATA[ 
+			select * from businesst
+			where busi_name = #{busi_name}
+			and busi_email1 = #{busi_email1}
+			and busi_email2 = #{busi_email2}
+		]]>
+	</select>
+	
+	<!-- 사업자정보조회(비밀번호 찾기) -->
+	<select id="selectMemberID" parameterType="String" resultType="BusinessVO">
+	<![CDATA[ 
+			select * from businesst
+			where busi_id = #{busi_id}
+		]]>
+	</select>
+	
+	<!-- 사업자조회(전체) -->
+	<select id="selectAllBusiness" resultMap="businessResult">
+	<![CDATA[ 
+			select * from businesst
+		]]>
+	</select>
+	
+</mapper>

@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.cart">
+<resultMap id="goodsResultS" type="goodsStayVO">
+		<result property="goods_stay_id" column="goods_stay_id" />
+		<result property="busi_id" column="busi_id" />
+		<result property="goods_stay_name" column="goods_stay_name" />
+		<result property="goods_stay_roadAddress" column="goods_stay_roadAddress" />
+		<result property="goods_stay_jibunAddress" column="goods_stay_jibunAddress" />
+		
+		<result property="goods_stay_namujiAddress" column="goods_stay_namujiAddress" />
+		<result property="goods_stay_zipcode" column="goods_stay_zipcode" />
+		<result property="goods_stay_num_people" column="goods_stay_num_people" />
+		<result property="goods_stay_price" column="goods_stay_price" />
+		<result property="goods_stay_discount" column="goods_stay_discount" />
+		
+		<result property="goods_stay_discount_title" column="goods_stay_discount_title" />
+		<result property="goods_stay_sales_price" column="goods_stay_sales_price" />
+		<result property="goods_stay_admin_yn" column="goods_stay_admin_yn" />
+		<result property="goods_stay_room_number" column="goods_stay_room_number" />
+		<result property="goods_stay_entered_Date" column="goods_stay_entered_Date" />
+		
+		<result property="goods_stay_admission_Date" column="goods_stay_admission_Date" />
+		<result property="goods_stay_departure_Date" column="goods_stay_departure_Date" />
+		<result property="goods_stay_sort" column="goods_stay_sort" />
+	</resultMap>
+	<resultMap id="busi_goodsAirResult" type="goodsAirVO">
+		<result property="goods_air_id" column="goods_air_id" />
+		<result property="busi_id" column="busi_id" />
+		<result property="goods_air_name" column="goods_air_name" />
+		<result property="goods_air_depart1" column="goods_air_depart1" />
+		<result property="goods_air_arrive1" column="goods_air_arrive1" />
+		
+		<result property="goods_air_depart_Date" column="goods_air_depart_Date" />
+		<result property="goods_air_arrive_Date" column="goods_air_arrive_Date" />
+		<result property="goods_air_class" column="goods_air_class" />
+		<result property="goods_air_num_people" column="goods_air_num_people" />
+		<result property="goods_air_price" column="goods_air_price" />
+		
+		<result property="goods_air_sales_price" column="goods_air_sales_price" />
+		<result property="goods_air_discount" column="goods_air_discount" />
+		<result property="goods_air_discount_title" column="goods_air_discount_title" />
+		<result property="goods_air_admin_yn" column="goods_air_admin_yn" />
+		<result property="goods_air_entered_Date" column="goods_air_entered_Date" />
+		
+		<result property="air_airplane_id" column="air_airplane_id" />
+	</resultMap>
+	<resultMap id="imageResult" type="ImageFileVO">
+		<result property="image_id" column="image_id"/>
+		<result property="goods_id" column="goods_id"/>
+		<result property="fileName" column="fileName"/>
+		<result property="reg_id" column="reg_id"/>
+		<result property="fileType" column="fileType"/>
+	</resultMap>	
+	
+	<resultMap id="cart_stay_Result" type="cartStayVO">
+		<result property="cart_stay_id" column="cart_stay_id"/>
+		<result property="cart_stay_room_number" column="cart_stay_room_number"/>
+		<result property="cart_stay_creDate" column="cart_stay_creDate"/>
+		<result property="mem_id" column="mem_id"/>
+		<result property="goods_stay_id" column="goods_stay_id"/>
+		
+		<result property="startD" column="startD"/>
+		<result property="endD" column="endD"/>
+	</resultMap>	
+	
+	<resultMap id="cart_air_Result" type="cartAirVO">
+		<result property="cart_air_id" column="cart_air_id"/>
+		<result property="cart_air_qty_people" column="cart_air_qty_people"/>
+		<result property="cart_air_creDate" column="cart_air_creDate"/>
+		<result property="air_airplane_id" column="air_airplane_id"/>
+		<result property="mem_id" column="mem_id"/>
+		
+		<result property="cart_vihicleId" column="cart_vihicleId"/>
+		<result property="cart_airlineNm" column="cart_airlineNm"/>
+		<result property="cart_depPlandTime" column="cart_depPlandTime"/>
+		<result property="cart_arrPlandTime" column="cart_arrPlandTime"/>
+		<result property="cart_depAirportNm" column="cart_depAirportNm"/>
+		
+		<result property="cart_arrAirportNm" column="cart_arrAirportNm"/>
+		<result property="cart_economyCharge" column="cart_economyCharge"/>
+		<result property="cart_prestigeCharge" column="cart_prestigeCharge"/>
+		
+	</resultMap>	
+
+<select id="selectCountInCart" resultType="String" parameterType="cartStayVO">
+       <![CDATA[
+         	select case count(*) when 0 then 'false' else 'true' end 
+			from cart_stayt
+         	where goods_stay_id=#{goods_stay_id}
+           		and mem_id=#{mem_id} 
+
+       ]]>
+   </select>
+
+<insert id="insertGoodsInCart" parameterType="cartStayVO">
+	    <![CDATA[
+	    	insert into cart_stayt(cart_stay_id,
+	    	                           goods_stay_id,
+	    	                           mem_id, 
+									   cart_stay_room_number,
+									   startD,
+									   endD
+									   )
+	        				 values(#{cart_stay_id},
+							        #{goods_stay_id},
+							        #{mem_id}, 
+									#{cart_stay_room_number},
+									#{startD},
+									#{endD}
+									)
+    	]]>
+	</insert>
+
+<select id="selectMaxStayCartId" resultType="int">
+	    <![CDATA[
+			select ifnull(max(cart_stay_id), 0) + 1 from cart_stayt 
+    	]]>
+	</select>
+<select id="selectMaxAirCartId" resultType="int">
+	    <![CDATA[
+			select ifnull(max(cart_air_id), 0) + 1 from cart_airt 
+    	]]>
+	</select>
+
+<!-- 0324 -->
+<select id="selectStayCartList"  parameterType="cartStayVO"  resultMap="cart_stay_Result"   >
+	    <![CDATA[
+			select *
+			from cart_stayt 
+			where mem_id=#{mem_id} 
+			ORDER BY cart_stay_id
+		]]>
+	</select>
+ 	<!--select * from t_shopping_cart-->
+
+	<!-- (SELECT goods_id FROM goods_detail_imaget) -->
+	<select id="selectGoodsList" resultMap="goodsResultS" parameterType="java.util.Map">
+      <![CDATA[
+          	SELECT g.*, 
+		    COALESCE(d.fileName, 'no_image.jpg') AS goods_stay_fileName 
+		    FROM goods_stayt g 
+		    LEFT JOIN goods_detail_imaget d 
+		    ON g.goods_stay_id = d.goods_id 
+		    AND d.filetype = 'main_image'
+		    WHERE g.goods_stay_id IN
+      ]]>
+		<foreach item="item" collection="list" open="(" separator="," close=")">
+			#{item.goods_stay_id}
+		</foreach>
+		ORDER BY goods_stay_id
+	</select>
+	
+	<!-- 카트 항목 삭제 -->
+	<delete id="deleteCartGoods" parameterType="int">
+	    <![CDATA[
+	      delete from cart_stayt
+	      where cart_stay_id=#{cart_id}
+    	]]>
+	</delete>
+	<!-- 카트 항목 삭제 -->
+	<delete id="deleteCartGoodsAir" parameterType="int">
+	    <![CDATA[
+	      delete from cart_airt
+	      where cart_air_id=#{cart_id}
+    	]]>
+	</delete>
+
+<insert id="insertGoodsAirInCart" parameterType="cartAirVO">
+	    <![CDATA[
+	    	insert into cart_airt(cart_air_id,
+	    	                           cart_air_qty_people,
+	    	                           mem_id, 
+									   cart_vihicleId,
+									   cart_airlineNm,
+									   cart_depPlandTime,
+									   cart_arrPlandTime,
+									   cart_depAirportNm,
+									   cart_arrAirportNm,
+									   cart_economyCharge,
+									   cart_prestigeCharge
+									   )
+	        				 values(#{cart_air_id},
+							        #{cart_air_qty_people},
+							        #{mem_id}, 
+									#{cart_vihicleId},
+									#{cart_airlineNm},
+									#{cart_depPlandTime},
+									#{cart_arrPlandTime},
+									#{cart_depAirportNm},
+									#{cart_arrAirportNm},
+									#{cart_economyCharge},
+									#{cart_prestigeCharge}
+									)
+    	]]>
+	</insert>
+<select id="selectAirCartList"  parameterType="cartAirVO"  resultMap="cart_air_Result"   >
+	    <![CDATA[
+			select *
+			from cart_airt 
+			where mem_id=#{mem_id} 
+			ORDER BY cart_air_id
+		]]>
+	</select>
+</mapper>

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.mypage">
+<!-- 리절트 맵 정의 -->
+	
+	<update id="updateMyInfo" parameterType="java.util.HashMap">
+	   update membert
+			   <set>
+			      <if test=" mem_pw!='' and mem_pw!=null">
+			        mem_pw=#{mem_pw},
+			      </if>
+			      <if test=" mem_tel1!='' and mem_tel1!=null">
+			         mem_tel1=#{mem_tel1},
+			      </if>
+			      <if test=" mem_tel2!='' and mem_tel2!=null">
+			         mem_tel2=#{mem_tel2},
+			      </if>
+			      <if test=" mem_tel3!='' and mem_tel3!=null">
+			         mem_tel3=#{mem_tel3},
+			      </if>
+			      <if test=" mem_email1!='' and mem_email1!=null">
+			         mem_email1=#{mem_email1},
+			      </if>
+			      <if test=" mem_email2!='' and mem_email2!=null">
+			         mem_email2=#{mem_email2},
+			      </if>
+			      <if test=" mem_zipcode!='' and mem_zipcode!=null">
+			         mem_zipcode=#{mem_zipcode},
+			      </if>
+			      <if test=" mem_roadAddress!='' and mem_roadAddress!=null">
+			         mem_roadAddress=#{mem_roadAddress},
+			      </if>			     
+			      <if test=" mem_jibunAddress!='' and mem_jibunAddress!=null">
+			         mem_jibunAddress=#{mem_jibunAddress},
+			      </if>
+			      <if test=" mem_namujiAddress!='' and mem_namujiAddress!=null">
+			         mem_namujiAddress=#{mem_namujiAddress}
+			      </if>
+			   </set>
+		where 
+		mem_id=#{mem_id}
+	</update>
+	
+	<update id="updateKakaoInfo" parameterType="java.util.HashMap">
+	   update membert
+			   <set>
+			     <if test=" mem_name!='' and mem_name!=null">
+			        mem_name=#{mem_name}
+			      </if> 
+			   </set>
+		where 
+		mem_id=#{mem_id}
+	</update>
+	
+	<select id="selectMyDetailInfo" resultType="memberVO"   parameterType="String"  >
+	    <![CDATA[
+			select * from membert 
+			where mem_id=#{mem_id}
+    	]]>
+	</select>
+
+	<update id="updateMyBusiInfo" parameterType="java.util.HashMap">
+	   update businesst
+			   <set>
+			      <if test=" busi_pw!='' and busi_pw!=null">
+			        busi_pw=#{busi_pw},
+			      </if>
+			      <if test=" busi_tel1!='' and busi_tel1!=null">
+			         busi_tel1=#{busi_tel1},
+			      </if>
+			      <if test=" busi_tel2!='' and busi_tel2!=null">
+			         busi_tel2=#{busi_tel2},
+			      </if>
+			      <if test=" busi_tel3!='' and busi_tel3!=null">
+			         busi_tel3=#{busi_tel3},
+			      </if>
+			      <if test=" busi_hp1!='' and busi_hp1!=null">
+			         busi_hp1=#{busi_hp1},
+			      </if>
+			      <if test=" busi_hp2!='' and busi_hp2!=null">
+			         busi_hp2=#{busi_hp2},
+			      </if>
+			      <if test=" busi_hp3!='' and busi_hp3!=null">
+			         busi_hp3=#{busi_hp3},
+			      </if>
+			      <if test=" busi_email1!='' and busi_email1!=null">
+			         busi_email1=#{busi_email1},
+			      </if>
+			      <if test=" busi_email2!='' and busi_email2!=null">
+			         busi_email2=#{busi_email2},
+			      </if>
+			      <if test=" busi_zipcode!='' and busi_zipcode!=null">
+			         busi_zipcode=#{busi_zipcode},
+			      </if>
+			      <if test=" busi_roadAddress!='' and busi_roadAddress!=null">
+			         busi_roadAddress=#{busi_roadAddress},
+			      </if>			     
+			      <if test=" busi_jibunAddress!='' and busi_jibunAddress!=null">
+			         busi_jibunAddress=#{busi_jibunAddress},
+			      </if>
+			      <if test=" busi_namujiAddress!='' and busi_namujiAddress!=null">
+			         busi_namujiAddress=#{busi_namujiAddress}
+			      </if>
+			   </set>
+		where 
+		busi_id=#{busi_id}
+	</update>
+	
+	<select id="selectMyDetailBusiInfo" resultType="businessVO"   parameterType="String"  >
+	    <![CDATA[
+			select * from businesst 
+			where busi_id=#{busi_id}
+    	]]>
+	</select>
+	
+</mapper>

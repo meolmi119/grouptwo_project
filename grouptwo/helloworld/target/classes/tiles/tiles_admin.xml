@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+ "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+ "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+	<definition name="baseLayout" template="/WEB-INF/views/common/layout.jsp">
+		<put-attribute name="title" value="" />
+		<put-attribute name="header" value="/WEB-INF/views/common/header.jsp" />
+		<put-attribute name="side" value=""/>
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
+	</definition>
+	
+	<definition name="/admin/managementForm" extends="baseLayout">
+		<put-attribute name="title" value="관리페이지" />
+		<put-attribute name="body" value="/WEB-INF/views/admin/managementForm.jsp" />
+	</definition>
+	
+	<definition name="/admin/listMember" extends="baseLayout">
+		<put-attribute name="title" value="회원 전체조회" />
+		<put-attribute name="body" value="/WEB-INF/views/admin/listMember.jsp" />
+	</definition>
+	
+	<definition name="/admin/listBusiness" extends="baseLayout">
+		<put-attribute name="title" value="사업자 전체조회" />
+		<put-attribute name="body" value="/WEB-INF/views/admin/listBusiness.jsp" />
+	</definition>
+	
+	<definition name="/admin/memberEditAdmin" extends="baseLayout">
+		<put-attribute name="title" value="관리자 회원 수정" />
+		<put-attribute name="body" value="/WEB-INF/views/admin/memberEditAdmin.jsp" />
+	</definition>
+	
+	<definition name="/admin/businessEditAdmin" extends="baseLayout">
+		<put-attribute name="title" value="관리자 사업자 수정" />
+		<put-attribute name="body" value="/WEB-INF/views/admin/businessEditAdmin.jsp" />
+	</definition>
+	
+	<definition name="/admin/eventListAll" extends="baseLayout">
+		<put-attribute name="title" value="이벤트관리" />
+		<put-attribute name="body" value="/WEB-INF/views/admin/eventListAll.jsp" />
+	</definition>
+	
+	<definition name="/admin/adminOrderList" extends="baseLayout">
+		<put-attribute name="title" value="이벤트관리" />
+		<put-attribute name="body" value="/WEB-INF/views/admin/adminOrderList.jsp" />
+	</definition>
+</tiles-definitions>

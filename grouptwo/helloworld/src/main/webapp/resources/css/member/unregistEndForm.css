@@ -1,0 +1,39 @@
+.seventh>div {
+  width: 50%;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 30px 5%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.seventh>div> :nth-child(1) {
+  font-family: 'Noto Sans KR', sans-serif;
+  padding: 30px 0;
+}
+
+.seventh img {
+  padding: 20px 0;
+}
+
+.seventh p {
+  padding: 10px 0;
+  text-align: center;
+}
+
+.seventh button {
+  background-color: #9FCBF6; /* 배경색 */
+  border: 1px solid #0E256D; /* 테두리 */
+  box-shadow: 3px 3px 3px #0E256D;
+  border-radius: 10px;
+  cursor: pointer; /* 마우스 포인터 */
+  width: 40%;
+  color: black;
+}
+
+.seventh button:hover {
+  background-color: #0E256D; /* 배경색 */
+  border: 1px solid #9FCBF6; /* 테두리 */
+  color: #9FCBF6; /* 글자색 */
+  box-shadow: 3px 3px 3px #0E256D;
+}
